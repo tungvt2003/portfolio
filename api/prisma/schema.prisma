@@ -1,0 +1,88 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum PublishStatus {
+  draft
+  published
+  archived
+}
+
+model AdminUser {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  name         String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model Profile {
+  id        String   @id @default(cuid())
+  name      String
+  title     Json
+  objective Json
+  location  Json
+  email     String
+  phone     String
+  github    String
+  cvUrl     String?
+  isPublic  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Project {
+  id          String        @id @default(cuid())
+  slug        String        @unique
+  title       Json
+  summary     Json
+  role        Json
+  highlights  Json?
+  tags        String[]
+  demoUrl     String?
+  repoUrl     String?
+  thumbnailUrl String?
+  order       Int           @default(0)
+  status      PublishStatus @default(draft)
+  publishedAt DateTime?
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+}
+
+model Experience {
+  id          String        @id @default(cuid())
+  role        Json
+  company     String
+  period      String
+  description Json
+  order       Int           @default(0)
+  status      PublishStatus @default(published)
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+}
+
+model Skill {
+  id        String        @id @default(cuid())
+  category  String
+  name      String
+  level     Int
+  order     Int           @default(0)
+  status    PublishStatus @default(published)
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+}
+
+model Setting {
+  id        String        @id @default(cuid())
+  key       String        @unique
+  value     Json
+  status    PublishStatus @default(published)
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+}

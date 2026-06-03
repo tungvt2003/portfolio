@@ -1,0 +1,64 @@
+'use client'
+
+import { motion } from 'framer-motion'
+import { GraduationCap } from 'lucide-react'
+import { education } from '@/lib/data'
+import type { Locale } from '@/lib/i18n'
+import type { getTranslations } from '@/lib/i18n'
+
+interface EducationSectionProps {
+  locale: Locale
+  t: ReturnType<typeof getTranslations>
+}
+
+export function EducationSection({ locale, t }: EducationSectionProps) {
+  return (
+    <section id="education" className="space-y-5">
+      <div>
+        <h2 className="flex items-center gap-2 font-display text-xl font-black tracking-tight text-white">
+          <GraduationCap className="h-4 w-4 text-cyber-blue" />
+          {t.education.title}
+        </h2>
+        <p className="mt-1 text-[11px] font-bold uppercase tracking-[0.16em] text-slate-500">
+          {t.education.subtitle}
+        </p>
+      </div>
+
+      <div className="relative border-l border-white/10 pl-6 sm:pl-8">
+        <div className="absolute bottom-0 left-[-1px] top-0 w-px bg-gradient-to-b from-cyber-blue to-transparent" />
+
+        {education.map((item, index) => (
+          <motion.article
+            key={item.school.en}
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: '-80px' }}
+            transition={{ duration: 0.45, delay: index * 0.08 }}
+            className="cyber-panel-hover group relative rounded-xl border border-slate-800 bg-slate-950/35 p-5"
+          >
+            <span className="absolute left-[-31px] top-6 h-3 w-3 rounded-full border border-cyber-blue bg-cyber-blue/30 sm:left-[-39px]" />
+
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+              <div>
+                <h3 className="font-display text-sm font-black text-white transition group-hover:text-cyber-blue">
+                  {item.school[locale]}
+                </h3>
+                <p className="mt-2 text-xs leading-6 text-slate-400">
+                  {t.education.degree}:{' '}
+                  <span className="font-semibold text-slate-200">{item.major[locale]}</span>
+                </p>
+                <p className="mt-1 font-mono text-[10px] font-semibold text-slate-500">
+                  {item.period}
+                </p>
+              </div>
+
+              <div className="w-fit rounded-full border border-cyber-blue/20 bg-cyber-blue/10 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-cyber-sky">
+                {t.education.gpa}: {item.gpa}
+              </div>
+            </div>
+          </motion.article>
+        ))}
+      </div>
+    </section>
+  )
+}

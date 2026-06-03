@@ -1,0 +1,49 @@
+---
+description: Codex + Cursor clean coding rules inspired by Karpathy guidelines. Minimize assumptions, keep implementations simple, make surgical edits, and verify outcomes with concrete checks.
+alwaysApply: true
+---
+
+# Codex clean code rules (Cursor)
+
+These rules optimize for correctness and minimal diffs in this workspace.
+
+## 1) Think before coding
+- Restate the goal and list assumptions before implementation when the task is non-trivial.
+- If the request is ambiguous, ask one focused clarification instead of guessing.
+- If multiple valid approaches exist, choose the simplest one and mention the tradeoff briefly.
+- Push back when a requested change is unsafe or unnecessarily complex.
+
+## 2) Simplicity first
+- Implement only what the user asked for; avoid speculative features.
+- Prefer existing patterns over new abstractions for one-off logic.
+- Keep function/component scope small and names explicit.
+- Avoid fallback branches for impossible states unless requested.
+
+## 3) Surgical changes
+- Touch only files and lines required by the request.
+- Do not refactor unrelated code, rename symbols, or reformat entire files without request.
+- Preserve existing comments unless they become incorrect due to your change.
+- Clean up only artifacts created by your edit (unused imports/variables/types).
+
+## 4) Goal-driven execution
+- Define success criteria before editing (what must be true after change).
+- For multi-step work, create a short plan and verify each step.
+- Prefer reproducible verification: run the smallest relevant command(s) for affected area.
+- If you cannot verify locally, state exactly what was not verified and why.
+
+## 5) TypeScript and code quality guardrails
+- Respect strict TypeScript settings; avoid `any` unless no safe alternative exists.
+- Prefer clear types and existing interfaces over type assertions.
+- Keep side effects explicit; avoid hidden state changes.
+- Add concise comments only for non-obvious intent.
+
+## 6) Workspace-specific verification defaults
+Use the smallest check that matches impacted files:
+- UI (`portfolio-ui-design`): `npm run lint` or `npm run build` when needed.
+- API (`api`): `npm run build`.
+- If command tooling differs, use the project's existing package manager and scripts.
+
+Focus signal:
+- Diffs stay small and task-focused.
+- Clarifying questions happen before coding.
+- Verification is explicit, not implied.
