@@ -1,22 +1,19 @@
-'use client'
-
-import React from "react"
-
-import { useParams } from 'next/navigation'
+import React from 'react'
 import type { Locale } from '@/lib/i18n'
 import { getTranslations } from '@/lib/i18n'
 import { Header } from '@/components/public/header'
 import { Footer } from '@/components/public/footer'
 import { SceneBackground } from '@/components/three/scene/SceneBackground'
 
-export default function LocaleLayout({
+export default async function LocaleLayout({
   children,
+  params,
 }: {
   children: React.ReactNode
+  params: Promise<{ locale: string }>
 }) {
-  const params = useParams()
-  const locale = (params.locale as Locale) || 'en'
-  const t = getTranslations(locale)
+  const { locale } = await params
+  const t = getTranslations((locale as Locale) || 'en')
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-cyber-dark text-slate-100 selection:bg-cyber-blue/25 selection:text-white">
@@ -32,9 +29,9 @@ export default function LocaleLayout({
       </div>
 
       <div className="relative" style={{ zIndex: 10 }}>
-        <Header locale={locale} t={t} />
+        <Header locale={(locale as Locale) || 'en'} t={t} />
         <main>{children}</main>
-        <Footer locale={locale} t={t} />
+        <Footer locale={(locale as Locale) || 'en'} t={t} />
       </div>
     </div>
   )
