@@ -278,11 +278,6 @@ function toPublicSkills(skillsByCategory: ApiSkillsByCategory): PublicSkills {
 export async function loadPublicPortfolioData(): Promise<PublicPortfolioData> {
   const fallback = getFallbackPortfolioData()
 
-  // Skip API calls when no backend is configured (e.g. Vercel static deploy)
-  if (!process.env.NEXT_PUBLIC_API_BASE_URL) {
-    return fallback
-  }
-
   const [profileResult, projectsResult, experiencesResult, skillsResult] =
     await Promise.allSettled([
       fetchApiJson<ApiProfile>('/api/profile'),
