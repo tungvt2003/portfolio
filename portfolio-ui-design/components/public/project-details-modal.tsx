@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useEffect } from 'react'
 import { motion } from 'framer-motion'
@@ -38,7 +38,7 @@ export function ProjectDetailsModal({ locale, t, project, onClose }: ProjectDeta
 
   return (
     <div
-      className="fixed inset-0 z-[60] flex items-center justify-center bg-cyber-dark/90 p-4 backdrop-blur-md"
+      className="fixed inset-0 z-[60] flex items-center justify-center bg-slate-100/90 dark:bg-cyber-dark/90 p-4 backdrop-blur-md"
       onClick={onClose}
     >
       <motion.div
@@ -50,19 +50,19 @@ export function ProjectDetailsModal({ locale, t, project, onClose }: ProjectDeta
         exit={{ opacity: 0, scale: 0.95, y: 16 }}
         transition={{ duration: 0.2 }}
         onClick={(event) => event.stopPropagation()}
-        className="flex max-h-[86vh] w-full max-w-3xl flex-col overflow-hidden rounded-2xl border border-white/10 bg-slate-900 shadow-2xl shadow-black/40"
+        className="flex max-h-[86vh] w-full max-w-3xl flex-col overflow-hidden rounded-2xl border border-slate-200 dark:border-white/10 bg-white dark:bg-slate-900 shadow-2xl shadow-black/10 dark:shadow-black/40"
       >
-        <div className="flex items-center justify-between border-b border-white/10 bg-slate-950/80 px-5 py-4 backdrop-blur-sm">
+        <div className="flex items-center justify-between border-b border-slate-200 dark:border-white/10 bg-slate-50/80 dark:bg-slate-950/80 px-5 py-4 backdrop-blur-sm">
           <div className="flex items-center gap-2">
             <span className="h-2 w-2 rounded-full bg-cyber-blue shadow-[0_0_10px_#00e5ff]" />
-            <span className="font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-slate-400">
+            <span className="font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-slate-500 dark:text-slate-400">
               Project schema
             </span>
           </div>
           <button
             type="button"
             onClick={onClose}
-            className="rounded-lg border border-slate-800 bg-slate-800/50 p-1.5 text-slate-400 transition hover:bg-slate-700 hover:text-white"
+            className="rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-100/50 dark:bg-slate-800/50 p-1.5 text-slate-500 dark:text-slate-400 transition hover:bg-slate-200 dark:hover:bg-slate-700 hover:text-slate-800 dark:hover:text-white"
             aria-label="Close project details"
           >
             <X className="h-4 w-4" />
@@ -70,7 +70,7 @@ export function ProjectDetailsModal({ locale, t, project, onClose }: ProjectDeta
         </div>
 
         <div className="flex-1 space-y-6 overflow-y-auto px-5 py-5 sm:px-7">
-          <div className="relative aspect-[16/9] overflow-hidden rounded-xl border border-white/10 bg-slate-950">
+          <div className="relative aspect-[16/9] overflow-hidden rounded-xl border border-slate-200 dark:border-white/10 bg-slate-100 dark:bg-slate-950">
             <img
               src={project.thumbnail}
               alt={project.title[locale]}
@@ -87,10 +87,10 @@ export function ProjectDetailsModal({ locale, t, project, onClose }: ProjectDeta
             </div>
           </div>
 
-          <p className="text-sm leading-7 text-slate-300">{project.summary[locale]}</p>
+          <p className="text-sm leading-7 text-slate-500 dark:text-slate-300">{project.summary[locale]}</p>
 
-          <div className="space-y-3 border-t border-white/10 pt-5">
-            <h3 className="flex items-center gap-2 font-display text-sm font-bold text-white">
+          <div className="space-y-3 border-t border-slate-200 dark:border-white/10 pt-5">
+            <h3 className="flex items-center gap-2 font-display text-sm font-bold text-slate-700 dark:text-white">
               <Award className="h-4 w-4 text-cyber-blue" />
               Key work
             </h3>
@@ -98,7 +98,7 @@ export function ProjectDetailsModal({ locale, t, project, onClose }: ProjectDeta
               {highlights.map((highlight) => (
                 <li
                   key={highlight}
-                  className="flex items-start gap-2.5 rounded-lg border border-white/10 bg-slate-950/35 p-3 text-xs leading-6 text-slate-400"
+                  className="flex items-start gap-2.5 rounded-lg border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-slate-950/35 p-3 text-xs leading-6 text-slate-500 dark:text-slate-400"
                 >
                   <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-cyber-blue" />
                   <span>{highlight}</span>
@@ -107,8 +107,8 @@ export function ProjectDetailsModal({ locale, t, project, onClose }: ProjectDeta
             </ul>
           </div>
 
-          <div className="border-t border-white/10 pt-5">
-            <h4 className="mb-3 flex items-center gap-2 font-display text-xs font-bold uppercase tracking-[0.16em] text-white">
+          <div className="border-t border-slate-200 dark:border-white/10 pt-5">
+            <h4 className="mb-3 flex items-center gap-2 font-display text-xs font-bold uppercase tracking-[0.16em] text-slate-700 dark:text-white">
               <Layers3 className="h-4 w-4 text-cyber-purple" />
               Tech stack
             </h4>
@@ -116,7 +116,7 @@ export function ProjectDetailsModal({ locale, t, project, onClose }: ProjectDeta
               {project.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="rounded-full border border-slate-700 bg-slate-800/60 px-3 py-1 font-mono text-[10px] font-semibold text-slate-300"
+                  className="rounded-full border border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800/60 px-3 py-1 font-mono text-[10px] font-semibold text-slate-600 dark:text-slate-300"
                 >
                   {tag}
                 </span>
@@ -125,13 +125,13 @@ export function ProjectDetailsModal({ locale, t, project, onClose }: ProjectDeta
           </div>
         </div>
 
-        <div className="flex flex-col gap-3 border-t border-white/10 bg-slate-950/60 px-5 py-4 sm:flex-row sm:justify-end">
+        <div className="flex flex-col gap-3 border-t border-slate-200 dark:border-white/10 bg-slate-50/60 dark:bg-slate-950/60 px-5 py-4 sm:flex-row sm:justify-end">
           {project.repoUrl ? (
             <a
               href={project.repoUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 rounded-lg border border-slate-700 bg-slate-900/60 px-4 py-2 font-display text-xs font-bold text-slate-300 transition hover:border-slate-500 hover:bg-slate-800 hover:text-white"
+              className="inline-flex items-center justify-center gap-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white/35 dark:bg-slate-900/60 px-4 py-2 font-display text-xs font-bold text-slate-500 dark:text-slate-300 transition hover:border-slate-300 dark:hover:border-slate-500 hover:bg-white dark:hover:bg-slate-800 hover:text-slate-800 dark:hover:text-white"
             >
               <Github className="h-4 w-4" />
               {t.projects.viewCode}

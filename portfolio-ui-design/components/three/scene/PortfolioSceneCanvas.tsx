@@ -2,6 +2,7 @@
 
 import { Suspense } from 'react'
 import { Canvas } from '@react-three/fiber'
+import { useTheme } from 'next-themes'
 import { ParticleField } from '../objects/ParticleField'
 
 interface Props {
@@ -9,6 +10,9 @@ interface Props {
 }
 
 export function PortfolioSceneCanvas({ particleCount }: Props) {
+  const { resolvedTheme } = useTheme()
+  const isDark = resolvedTheme === 'dark'
+
   return (
     <Canvas
       camera={{ position: [0, 0, 6], fov: 70 }}
@@ -19,6 +23,8 @@ export function PortfolioSceneCanvas({ particleCount }: Props) {
         inset: 0,
         zIndex: 0,
         pointerEvents: 'none',
+        opacity: isDark ? 1 : 0.08,
+        transition: 'opacity 0.4s ease',
       }}
     >
       <Suspense fallback={null}>

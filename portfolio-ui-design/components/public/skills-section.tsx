@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState, type ComponentType } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
@@ -47,8 +47,8 @@ interface SkillsSectionProps {
 const skillCategories = [
   { key: 'frontend' as const, icon: Code2, accent: 'text-cyber-blue' },
   { key: 'backend' as const, icon: Server, accent: 'text-cyber-purple' },
-  { key: 'devops' as const, icon: Cloud, accent: 'text-amber-300' },
-  { key: 'tools' as const, icon: Wrench, accent: 'text-rose-300' },
+  { key: 'devops' as const, icon: Cloud, accent: 'text-amber-400 dark:text-amber-300' },
+  { key: 'tools' as const, icon: Wrench, accent: 'text-rose-400 dark:text-rose-300' },
 ]
 
 const lucideIcons: Record<string, ComponentType<{ className?: string; size?: number }>> = {
@@ -104,14 +104,14 @@ export function SkillsSection({ t, skills }: SkillsSectionProps) {
             <Sparkles className="h-3 w-3 text-cyber-blue/60" />
             04 · SKILLS
           </p>
-          <h2 className="font-display text-2xl font-black tracking-tight text-white sm:text-3xl">
+          <h2 className="font-display text-2xl font-black tracking-tight text-slate-700 dark:text-white sm:text-3xl">
             {t.skills.title}
           </h2>
           <p className="mt-1 text-[11px] font-medium text-slate-500">
             {t.skills.subtitle}
           </p>
         </div>
-        <div className="hidden h-px flex-1 bg-linear-to-r from-white/10 to-transparent sm:block" />
+        <div className="hidden h-px flex-1 bg-linear-to-r from-slate-200 dark:from-white/10 to-transparent sm:block" />
       </div>
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -133,19 +133,19 @@ export function SkillsSection({ t, skills }: SkillsSectionProps) {
               className={cn(
                 'cyber-panel-hover group relative overflow-hidden rounded-2xl border p-4 text-left transition',
                 isExpanded
-                  ? 'border-cyber-blue/30 bg-slate-900/55 shadow-[0_0_22px_rgba(0,229,255,0.08)]'
-                  : 'border-slate-800 bg-slate-950/35 hover:border-slate-700'
+                  ? 'border-cyber-blue/30 bg-white/35 dark:bg-slate-900/55 shadow-[0_0_22px_rgba(0,229,255,0.08)]'
+                  : 'border-slate-200 dark:border-slate-800 bg-white/40 dark:bg-slate-950/35 hover:border-slate-300 dark:hover:border-slate-700'
               )}
             >
               <span className="pointer-events-none absolute inset-0 bg-linear-to-br from-white/4 to-transparent opacity-0 transition group-hover:opacity-100" />
 
               <div className="relative flex items-start justify-between gap-3">
                 <div className="flex items-center gap-3">
-                  <span className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-slate-950 shadow-inner transition group-hover:scale-105">
+                  <span className="flex h-11 w-11 items-center justify-center rounded-xl border border-slate-200 dark:border-white/10 bg-white dark:bg-slate-950 shadow-inner transition group-hover:scale-105">
                     <Icon className={cn('h-5 w-5', category.accent)} />
                   </span>
                   <div>
-                    <h3 className="font-display text-sm font-black text-white transition group-hover:text-cyber-blue">
+                    <h3 className="font-display text-sm font-black text-slate-700 dark:text-white transition group-hover:text-cyber-blue">
                       {t.skills[category.key]}
                     </h3>
                     <p className="mt-1 text-[10px] font-medium text-slate-500">
@@ -169,14 +169,14 @@ export function SkillsSection({ t, skills }: SkillsSectionProps) {
                     transition={{ duration: 0.22, ease: 'easeInOut' }}
                     className="relative overflow-hidden"
                   >
-                    <div className="flex flex-wrap gap-2 border-t border-white/10 pt-4">
+                    <div className="flex flex-wrap gap-2 border-t border-slate-200 dark:border-white/10 pt-4">
                       {categorySkills.map((skill, skillIndex) => (
                         <motion.span
                           key={skill.name}
                           initial={{ opacity: 0, y: 8 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ duration: 0.2, delay: skillIndex * 0.03 }}
-                          className="inline-flex items-center gap-2 rounded-lg border border-slate-800 bg-slate-950/70 px-3 py-2 text-xs font-semibold text-slate-300"
+                          className="inline-flex items-center gap-2 rounded-lg border border-slate-200 dark:border-slate-800 bg-white/30 dark:bg-slate-950/70 px-3 py-2 text-xs font-semibold text-slate-600 dark:text-slate-300"
                         >
                           <SkillIcon iconKey={skill.icon} />
                           {skill.name}

@@ -1,8 +1,10 @@
-'use client'
+﻿'use client'
 
 import { useMemo } from 'react'
 import { motion } from 'framer-motion'
 import { ArrowUpRight, FileText, Sparkles } from 'lucide-react'
+import Image from 'next/image'
+import { SiReact, SiNextdotjs, SiTypescript, SiTailwindcss } from '@icons-pack/react-simple-icons'
 import type { PublicProfile, PublicProject } from '@/lib/portfolio-api'
 import type { Locale } from '@/lib/i18n'
 import type { getTranslations } from '@/lib/i18n'
@@ -15,10 +17,10 @@ interface HeroSectionProps {
 }
 
 const orbitBadges = [
-  { label: 'React', text: 'R', top: '10%', left: '8%', delay: 0 },
-  { label: 'Next.js', text: 'N', top: '24%', right: '-4%', delay: 1.3 },
-  { label: 'TypeScript', text: 'TS', bottom: '15%', right: '4%', delay: 2.6 },
-  { label: 'Tailwind CSS', text: 'CSS', bottom: '12%', left: '-5%', delay: 3.9 },
+  { label: 'React', Icon: SiReact, color: '#61DAFB', top: '10%', left: '8%', delay: 0 },
+  { label: 'Next.js', Icon: SiNextdotjs, color: 'currentColor', top: '24%', right: '-4%', delay: 1.3 },
+  { label: 'TypeScript', Icon: SiTypescript, color: '#3178C6', bottom: '15%', right: '4%', delay: 2.6 },
+  { label: 'Tailwind CSS', Icon: SiTailwindcss, color: '#06B6D4', bottom: '12%', left: '-5%', delay: 3.9 },
 ]
 
 export function HeroSection({ locale, t, profile, projects }: HeroSectionProps) {
@@ -34,7 +36,7 @@ export function HeroSection({ locale, t, profile, projects }: HeroSectionProps) 
   ]
 
   return (
-    <section id="hero" className="relative overflow-hidden rounded-2xl border border-white/10 bg-slate-950/35 p-5 shadow-2xl shadow-black/20 backdrop-blur-md sm:p-7 lg:p-8">
+    <section id="hero" className="relative overflow-hidden rounded-2xl border border-slate-200 dark:border-white/10 bg-white/40 dark:bg-slate-950/35 p-5 shadow-2xl shadow-black/5 dark:shadow-black/20 backdrop-blur-md sm:p-7 lg:p-8">
       <div className="pointer-events-none absolute left-1/4 top-0 h-72 w-72 -translate-y-1/2 rounded-full bg-cyber-blue/10 blur-[120px]" />
       <div className="pointer-events-none absolute bottom-0 right-0 h-80 w-80 translate-y-1/3 rounded-full bg-cyber-purple/10 blur-[120px]" />
 
@@ -52,7 +54,7 @@ export function HeroSection({ locale, t, profile, projects }: HeroSectionProps) 
 
           <div className="mt-6 space-y-3">
             <h1 className="font-display text-4xl font-black leading-[1.05] tracking-tight sm:text-5xl xl:text-6xl">
-              <span className="bg-gradient-to-r from-white via-slate-100 to-slate-300 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-slate-700 via-slate-600 to-slate-500 dark:from-white dark:via-slate-100 dark:to-slate-300 bg-clip-text text-transparent">
                 {profile.name.split(' ').slice(0, -1).join(' ')}
               </span>
               {' '}
@@ -60,7 +62,7 @@ export function HeroSection({ locale, t, profile, projects }: HeroSectionProps) 
                 {profile.name.split(' ').slice(-1)[0]}
               </span>
             </h1>
-            <p className="flex items-center gap-3 font-display text-xl font-semibold tracking-wide text-slate-300 sm:text-2xl">
+            <p className="flex items-center gap-3 font-display text-xl font-semibold tracking-wide text-slate-500 dark:text-slate-300 sm:text-2xl">
               <span className="border-l-2 border-cyber-blue pl-3">{profile.role[locale]}</span>
               <span className="relative inline-flex h-2.5 w-2.5">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyber-blue opacity-70" />
@@ -69,7 +71,7 @@ export function HeroSection({ locale, t, profile, projects }: HeroSectionProps) 
             </p>
           </div>
 
-          <p className="mt-5 max-w-2xl text-sm leading-7 text-slate-400 sm:text-base">
+          <p className="mt-5 max-w-2xl text-sm leading-7 text-slate-500 dark:text-slate-400 sm:text-base">
             {t.hero.subtitle}
           </p>
 
@@ -84,24 +86,24 @@ export function HeroSection({ locale, t, profile, projects }: HeroSectionProps) 
             <a
               href={profile.cvFile}
               download
-              className="inline-flex items-center gap-2 rounded-lg border border-slate-700 bg-slate-900/50 px-5 py-3 font-display text-xs font-bold text-slate-200 transition hover:border-slate-500 hover:bg-slate-800 hover:text-white"
+              className="inline-flex items-center gap-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-white/35 dark:bg-slate-900/50 px-5 py-3 font-display text-xs font-bold text-slate-700 dark:text-slate-200 transition hover:border-slate-400 dark:hover:border-slate-500 hover:bg-white dark:hover:bg-slate-800 hover:text-slate-800 dark:hover:text-white"
             >
               <FileText className="h-4 w-4 text-cyber-blue" />
               {t.hero.downloadCV}
             </a>
           </div>
 
-          <div className="mt-8 grid max-w-md grid-cols-3 gap-3 border-t border-white/10 pt-6">
+          <div className="mt-8 grid max-w-md grid-cols-3 gap-3 border-t border-slate-200 dark:border-white/10 pt-6">
             {stats.map((stat) => (
               <div
                 key={stat.label}
-                className="group relative overflow-hidden rounded-xl border border-white/8 bg-white/3 p-3 transition hover:border-cyber-blue/30 hover:bg-cyber-blue/5"
+                className="group relative overflow-hidden rounded-xl border border-slate-200 dark:border-white/8 bg-slate-50 dark:bg-white/3 p-3 transition hover:border-cyber-blue/30 hover:bg-cyber-blue/5"
               >
                 <div className="pointer-events-none absolute inset-0 bg-linear-to-br from-cyber-blue/5 to-transparent opacity-0 transition group-hover:opacity-100" />
-                <div className="font-display text-2xl font-black tracking-tight text-white">
+                <div className="font-display text-2xl font-black tracking-tight text-slate-700 dark:text-white">
                   {stat.value}
                 </div>
-                <div className="mt-1 text-[9px] font-bold uppercase tracking-[0.14em] text-slate-500">
+                <div className="mt-1 text-[9px] font-bold uppercase tracking-[0.14em] text-slate-400 dark:text-slate-500">
                   {stat.label}
                 </div>
               </div>
@@ -118,16 +120,20 @@ export function HeroSection({ locale, t, profile, projects }: HeroSectionProps) 
           <div className="relative flex h-72 w-72 select-none items-center justify-center sm:h-80 sm:w-80">
             <div className="absolute inset-2 rounded-full border border-cyber-blue/10 animate-pulse-ring" />
             <div className="absolute inset-7 rounded-full border border-cyber-purple/15 animate-pulse-ring [animation-delay:1s]" />
-            <div className="absolute inset-0 rotate-12 rounded-full border border-dashed border-white/10" />
+            <div className="absolute inset-0 rotate-12 rounded-full border border-dashed border-slate-300 dark:border-white/10" />
             <div className="absolute inset-10 -rotate-45 rounded-full border border-cyber-blue/10" />
 
-            <div className="relative flex h-56 w-56 items-center justify-center overflow-hidden rounded-full border border-cyber-blue/30 bg-cyber-dark/50 p-1.5 shadow-[0_0_55px_rgba(0,229,255,0.16)] backdrop-blur-md sm:h-64 sm:w-64">
+            <div className="relative flex h-56 w-56 items-center justify-center overflow-hidden rounded-full border border-cyber-blue/30 bg-white/40 dark:bg-cyber-dark/50 p-1.5 shadow-[0_0_55px_rgba(0,229,255,0.16)] backdrop-blur-md sm:h-64 sm:w-64">
               <div className="absolute inset-0 animate-spin bg-gradient-to-tr from-cyber-blue/20 via-transparent to-cyber-purple/20 [animation-duration:12s]" />
-              <div className="relative h-full w-full overflow-hidden rounded-full border border-white/10 bg-slate-950">
-                <img
+              <div className="relative h-full w-full overflow-hidden rounded-full border border-slate-200 dark:border-white/10 bg-slate-100 dark:bg-slate-950">
+                <Image
                   src="/portfolio/z7912950942352_d4b1d30ad3c1b2c1e37613c37ec2c074.jpg"
                   alt={profile.name}
-                  className="h-full w-full object-cover transition-transform duration-500 hover:scale-110"
+                  fill
+                  sizes="(max-width: 640px) 224px, 256px"
+                  quality={100}
+                  priority
+                  className="object-cover transition-transform duration-500 hover:scale-110"
                 />
               </div>
               <div className="pointer-events-none absolute inset-1 rounded-full border border-cyber-blue/10" />
@@ -152,12 +158,10 @@ export function HeroSection({ locale, t, profile, projects }: HeroSectionProps) 
                   bottom: badge.bottom,
                   left: badge.left,
                 }}
-                className="absolute z-10 flex h-10 w-10 items-center justify-center overflow-hidden rounded-xl border border-white/10 bg-slate-950/55 text-xs font-bold text-white shadow-lg backdrop-blur-md"
+                className="absolute z-10 flex h-12 w-12 items-center justify-center overflow-hidden rounded-2xl border border-slate-200/60 dark:border-white/10 bg-slate-50/70 dark:bg-slate-950/70 text-slate-800 dark:text-white shadow-lg backdrop-blur-md"
               >
-                <span className="absolute inset-0 bg-gradient-to-b from-white/10 to-transparent" />
-                <span className="relative font-mono text-[11px] leading-none text-cyber-sky">
-                  {badge.text}
-                </span>
+                <span className="absolute inset-0 bg-linear-to-b from-white/10 to-transparent" />
+                <badge.Icon size={22} color={badge.color} className="relative" />
               </motion.div>
             ))}
           </div>

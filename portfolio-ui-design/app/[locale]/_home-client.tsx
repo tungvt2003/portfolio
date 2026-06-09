@@ -37,7 +37,7 @@ export function HomeClient({ locale }: { locale: Locale }) {
             onViewDetails={setSelectedProject}
           />
 
-          <div className="border-t border-white/10 pt-8">
+          <div className="border-t border-slate-200 dark:border-white/10 pt-8">
             <ExperienceSection
               locale={locale}
               t={t}
@@ -45,15 +45,15 @@ export function HomeClient({ locale }: { locale: Locale }) {
             />
           </div>
 
-          <div className="border-t border-white/10 pt-8">
+          <div className="border-t border-slate-200 dark:border-white/10 pt-8">
             <EducationSection locale={locale} t={t} />
           </div>
 
-          <div className="border-t border-white/10 pt-8">
+          <div className="border-t border-slate-200 dark:border-white/10 pt-8">
             <SkillsSection locale={locale} t={t} skills={portfolioData.skills} />
           </div>
 
-          <div className="border-t border-white/10 pt-8">
+          <div className="border-t border-slate-200 dark:border-white/10 pt-8">
             <ContactSection locale={locale} t={t} profile={portfolioData.profile} />
           </div>
         </div>

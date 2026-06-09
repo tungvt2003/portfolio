@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import Link from 'next/link'
 import { useTheme } from 'next-themes'
@@ -81,33 +81,33 @@ export function Header({ locale, t }: HeaderProps) {
       className={cn(
         'fixed left-0 right-0 top-0 z-50 transition-all duration-300',
         scrolled
-          ? 'border-b border-white/10 bg-cyber-dark/80 py-3 shadow-lg shadow-black/20 backdrop-blur-xl'
+          ? 'border-b border-slate-200 dark:border-white/10 bg-white/35 dark:bg-cyber-dark/80 py-3 shadow-lg shadow-black/5 dark:shadow-black/20 backdrop-blur-xl'
           : 'bg-transparent py-5'
       )}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link href={`/${locale}`} className="group flex items-center gap-3">
-          <span className="relative flex h-10 w-10 overflow-hidden rounded-lg border border-cyber-blue/30 bg-slate-950/60 shadow-[0_0_18px_rgba(0,229,255,0.18)]">
+          <span className="relative flex h-10 w-10 overflow-hidden rounded-lg border border-cyber-blue/30 bg-white/30 dark:bg-slate-950/60 shadow-[0_0_18px_rgba(0,229,255,0.18)]">
             <img
               src="/portfolio/vt-logo.png"
               alt={`${profile.initials} logo`}
               className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
             />
           </span>
-          <span className="hidden font-display text-sm font-bold tracking-wide text-white sm:inline-flex">
+          <span className="hidden font-display text-sm font-bold tracking-wide text-slate-700 dark:text-white sm:inline-flex">
             {profile.name}
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-1 rounded-full border border-white/10 bg-slate-950/50 px-2 py-1.5 backdrop-blur-md lg:flex">
+        <nav className="hidden items-center gap-1 rounded-full border border-slate-300/40 dark:border-white/10 bg-slate-50/60 dark:bg-slate-950/50 px-3 py-2 backdrop-blur-md lg:flex">
           {navLinks.map((link) => (
             <button
               key={link.id}
               type="button"
               onClick={() => scrollToSection(link.id)}
               className={cn(
-                'relative rounded-full px-4 py-1.5 text-xs font-medium tracking-wide transition-colors',
-                activeSection === link.id ? 'text-cyber-blue' : 'text-slate-400 hover:text-white'
+                'relative rounded-full px-5 py-2 text-sm font-medium tracking-wide transition-colors',
+                activeSection === link.id ? 'text-cyber-blue' : 'text-slate-600 dark:text-slate-400 hover:text-slate-800 dark:hover:text-white'
               )}
             >
               {activeSection === link.id ? (
@@ -127,7 +127,7 @@ export function Header({ locale, t }: HeaderProps) {
             asChild
             variant="ghost"
             size="sm"
-            className="border border-white/10 bg-slate-950/30 text-xs text-slate-300 hover:bg-white/5 hover:text-white"
+            className="border border-slate-200 dark:border-white/10 bg-white/30 dark:bg-slate-950/30 text-xs text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-white/5 hover:text-slate-800 dark:hover:text-white"
           >
             <Link href={locale === 'en' ? '/vi' : '/en'}>
               <Globe className="h-3.5 w-3.5 text-cyber-blue" />
@@ -141,11 +141,11 @@ export function Header({ locale, t }: HeaderProps) {
               variant="ghost"
               size="icon-sm"
               onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-              className="border border-white/10 bg-slate-950/30 text-slate-300 hover:bg-white/5 hover:text-white"
+              className="border border-slate-200 dark:border-white/10 bg-white/30 dark:bg-slate-950/30 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-white/5 hover:text-slate-800 dark:hover:text-white"
               title={theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
             >
               {theme === 'dark' ? (
-                <Sun className="h-3.5 w-3.5 text-amber-300" />
+                <Sun className="h-3.5 w-3.5 text-amber-400" />
               ) : (
                 <Moon className="h-3.5 w-3.5 text-cyber-sky" />
               )}
@@ -168,7 +168,7 @@ export function Header({ locale, t }: HeaderProps) {
             asChild
             variant="ghost"
             size="sm"
-            className="h-8 border border-white/10 bg-slate-950/30 px-2 text-[10px] text-slate-300 hover:bg-white/5"
+            className="h-8 border border-slate-200 dark:border-white/10 bg-white/30 dark:bg-slate-950/30 px-2 text-[10px] text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-white/5"
           >
             <Link href={locale === 'en' ? '/vi' : '/en'}>
               <Globe className="h-3 w-3 text-cyber-blue" />
@@ -187,7 +187,7 @@ export function Header({ locale, t }: HeaderProps) {
             variant="ghost"
             size="icon-sm"
             onClick={() => setMobileMenuOpen((prev) => !prev)}
-            className="border border-white/10 bg-slate-950/30 text-white hover:bg-white/5"
+            className="border border-slate-200 dark:border-white/10 bg-white/30 dark:bg-slate-950/30 text-slate-700 dark:text-white hover:bg-slate-100 dark:hover:bg-white/5"
           >
             {mobileMenuOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
             <span className="sr-only">Toggle navigation</span>
@@ -201,7 +201,7 @@ export function Header({ locale, t }: HeaderProps) {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="border-b border-white/10 bg-cyber-dark/95 backdrop-blur-xl lg:hidden"
+            className="border-b border-slate-200 dark:border-white/10 bg-white/95 dark:bg-cyber-dark/95 backdrop-blur-xl lg:hidden"
           >
             <div className="flex flex-col gap-1 px-6 py-5">
               {navLinks.map((link) => (
@@ -213,7 +213,7 @@ export function Header({ locale, t }: HeaderProps) {
                     'flex items-center justify-between rounded-lg px-4 py-3 text-left text-sm font-medium transition-colors',
                     activeSection === link.id
                       ? 'bg-cyber-blue/10 text-cyber-blue'
-                      : 'text-slate-300 hover:bg-white/5 hover:text-white'
+                      : 'text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-white/5 hover:text-slate-800 dark:hover:text-white'
                   )}
                 >
                   <span>{link.label}</span>
