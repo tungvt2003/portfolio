@@ -15,18 +15,24 @@ interface ExperienceSectionProps {
 export function ExperienceSection({ locale, t, experiences }: ExperienceSectionProps) {
   return (
     <section id="experience" className="space-y-6">
-      <div>
-        <h2 className="flex items-center gap-2 font-display text-xl font-black tracking-tight text-white">
-          <Briefcase className="h-4 w-4 text-cyber-blue" />
-          {t.experience.title}
-        </h2>
-        <p className="mt-1 text-[11px] font-bold uppercase tracking-[0.16em] text-slate-500">
-          {t.experience.subtitle}
-        </p>
+      <div className="flex items-end justify-between gap-4">
+        <div>
+          <p className="section-number mb-2 flex items-center gap-2">
+            <Briefcase className="h-3 w-3 text-cyber-blue/60" />
+            02 · EXPERIENCE
+          </p>
+          <h2 className="font-display text-2xl font-black tracking-tight text-white sm:text-3xl">
+            {t.experience.title}
+          </h2>
+          <p className="mt-1 text-[11px] font-medium text-slate-500">
+            {t.experience.subtitle}
+          </p>
+        </div>
+        <div className="hidden h-px flex-1 bg-linear-to-r from-white/10 to-transparent sm:block" />
       </div>
 
       <div className="relative space-y-6 border-l border-white/10 pl-6 sm:pl-8">
-        <div className="absolute bottom-0 left-[-1px] top-0 w-px bg-gradient-to-b from-cyber-blue via-cyber-purple/40 to-transparent" />
+        <div className="absolute bottom-0 -left-px top-0 w-px bg-linear-to-b from-cyber-blue via-cyber-purple/40 to-transparent" />
 
         {experiences.map((exp, index) => (
           <motion.article
@@ -37,7 +43,7 @@ export function ExperienceSection({ locale, t, experiences }: ExperienceSectionP
             transition={{ duration: 0.45, delay: index * 0.08 }}
             className="cyber-panel-hover group relative rounded-xl border border-slate-800 bg-slate-950/35 p-5"
           >
-            <span className="absolute left-[-31px] top-6 h-3 w-3 rounded-full border border-cyber-dark bg-slate-700 transition group-hover:scale-125 group-hover:bg-cyber-blue group-hover:shadow-[0_0_12px_#00e5ff] sm:left-[-39px]" />
+            <span className="absolute -left-7.75 top-6 h-3 w-3 rounded-full border border-cyber-dark bg-slate-700 transition group-hover:scale-125 group-hover:bg-cyber-blue group-hover:shadow-[0_0_12px_#00e5ff] sm:-left-9.75" />
 
             <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
               <div>

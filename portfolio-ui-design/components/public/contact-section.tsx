@@ -21,14 +21,20 @@ export function ContactSection({ locale, t, profile }: ContactSectionProps) {
 
   return (
     <section id="contact" className="space-y-6">
-      <div>
-        <h2 className="flex items-center gap-2 font-display text-xl font-black tracking-tight text-white">
-          <MessageSquare className="h-4 w-4 text-cyber-blue" />
-          {t.contact.title}
-        </h2>
-        <p className="mt-1 text-[11px] font-bold uppercase tracking-[0.16em] text-slate-500">
-          {t.contact.subtitle}
-        </p>
+      <div className="flex items-end justify-between gap-4">
+        <div>
+          <p className="section-number mb-2 flex items-center gap-2">
+            <MessageSquare className="h-3 w-3 text-cyber-blue/60" />
+            05 · CONTACT
+          </p>
+          <h2 className="font-display text-2xl font-black tracking-tight text-white sm:text-3xl">
+            {t.contact.title}
+          </h2>
+          <p className="mt-1 text-[11px] font-medium text-slate-500">
+            {t.contact.subtitle}
+          </p>
+        </div>
+        <div className="hidden h-px flex-1 bg-linear-to-r from-white/10 to-transparent sm:block" />
       </div>
 
       <motion.div
@@ -38,8 +44,8 @@ export function ContactSection({ locale, t, profile }: ContactSectionProps) {
         transition={{ duration: 0.45 }}
         className="cyber-panel relative overflow-hidden rounded-2xl p-5"
       >
-        <div className="pointer-events-none absolute right-[-5rem] top-[-6rem] h-56 w-56 rounded-full bg-cyber-blue/10 blur-[90px]" />
-        <div className="pointer-events-none absolute bottom-[-6rem] left-[-6rem] h-52 w-52 rounded-full bg-cyber-purple/10 blur-[90px]" />
+        <div className="pointer-events-none absolute -right-20 -top-24 h-56 w-56 rounded-full bg-cyber-blue/10 blur-[90px]" />
+        <div className="pointer-events-none absolute -bottom-24 -left-24 h-52 w-52 rounded-full bg-cyber-purple/10 blur-[90px]" />
 
         <div className="relative space-y-5">
           <p className="text-xs leading-6 text-slate-400">

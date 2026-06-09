@@ -98,16 +98,20 @@ export function SkillsSection({ t, skills }: SkillsSectionProps) {
 
   return (
     <section id="skills" className="space-y-6">
-      <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+      <div className="flex items-end justify-between gap-4">
         <div>
-          <h2 className="flex items-center gap-2 font-display text-xl font-black tracking-tight text-white">
-            <Sparkles className="h-4 w-4 text-cyber-blue" />
+          <p className="section-number mb-2 flex items-center gap-2">
+            <Sparkles className="h-3 w-3 text-cyber-blue/60" />
+            04 · SKILLS
+          </p>
+          <h2 className="font-display text-2xl font-black tracking-tight text-white sm:text-3xl">
             {t.skills.title}
           </h2>
-          <p className="mt-1 text-[11px] font-bold uppercase tracking-[0.16em] text-slate-500">
+          <p className="mt-1 text-[11px] font-medium text-slate-500">
             {t.skills.subtitle}
           </p>
         </div>
+        <div className="hidden h-px flex-1 bg-linear-to-r from-white/10 to-transparent sm:block" />
       </div>
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -133,7 +137,7 @@ export function SkillsSection({ t, skills }: SkillsSectionProps) {
                   : 'border-slate-800 bg-slate-950/35 hover:border-slate-700'
               )}
             >
-              <span className="pointer-events-none absolute inset-0 bg-gradient-to-br from-white/[0.04] to-transparent opacity-0 transition group-hover:opacity-100" />
+              <span className="pointer-events-none absolute inset-0 bg-linear-to-br from-white/4 to-transparent opacity-0 transition group-hover:opacity-100" />
 
               <div className="relative flex items-start justify-between gap-3">
                 <div className="flex items-center gap-3">

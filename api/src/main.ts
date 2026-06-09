@@ -73,7 +73,7 @@ async function bootstrap() {
     }
   }
 
-  const port = Number(process.env.PORT || 3001)
+  const port = Number(process.env.PORT || 9001)
   await app.listen(port)
 
   console.log(`portfolio-api is running at http://localhost:${port}`)

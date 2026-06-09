@@ -12,9 +12,9 @@
   "private": true,
   "scripts": {
     "build": "next build",
-    "dev": "next dev -p 3002",
+    "dev": "next dev -p 9000",
     "lint": "eslint .",
-    "start": "next start -p 3002"
+    "start": "next start -p 9000"
   },
   "dependencies": {
     "@emotion/is-prop-valid": "latest",
@@ -54,7 +54,11 @@
     "cmdk": "1.0.4",
     "date-fns": "4.1.0",
     "embla-carousel-react": "8.5.1",
+    "@react-three/drei": "^10.7.7",
+    "@react-three/fiber": "^9.6.1",
+    "@types/three": "^0.174.0",
     "framer-motion": "12.31.0",
+    "three": "^0.174.0",
     "input-otp": "1.4.1",
     "lucide-react": "^0.454.0",
     "next": "16.0.10",

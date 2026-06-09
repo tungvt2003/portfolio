@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dir \"d:\\\\VanTung\\\\Web\\\\Portfolio\")",
+      "Bash(pnpm add *)",
+      "Bash(pnpm install *)",
+      "Bash(pnpm config *)",
+      "Bash(where pnpm *)",
+      "Bash(pnpm --version)"
+    ]
+  }
+}

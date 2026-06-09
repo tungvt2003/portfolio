@@ -57,11 +57,14 @@ export function ProjectsSection({ locale, t, projects, onViewDetails }: Projects
       >
         <div className="mb-6 flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
           <div>
-            <h2 className="flex items-center gap-2 font-display text-xl font-black tracking-tight text-white">
-              <Star className="h-4 w-4 text-cyber-blue" />
+            <p className="section-number mb-2 flex items-center gap-2">
+              <Star className="h-3 w-3 text-cyber-blue/60" />
+              01 · PROJECTS
+            </p>
+            <h2 className="font-display text-2xl font-black tracking-tight text-white sm:text-3xl">
               {t.projects.title}
             </h2>
-            <p className="mt-1 max-w-xl text-[11px] font-bold uppercase tracking-[0.16em] text-slate-500">
+            <p className="mt-1 max-w-xl text-[11px] font-medium text-slate-500">
               {t.projects.subtitle}
             </p>
           </div>

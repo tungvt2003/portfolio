@@ -14,18 +14,24 @@ interface EducationSectionProps {
 export function EducationSection({ locale, t }: EducationSectionProps) {
   return (
     <section id="education" className="space-y-5">
-      <div>
-        <h2 className="flex items-center gap-2 font-display text-xl font-black tracking-tight text-white">
-          <GraduationCap className="h-4 w-4 text-cyber-blue" />
-          {t.education.title}
-        </h2>
-        <p className="mt-1 text-[11px] font-bold uppercase tracking-[0.16em] text-slate-500">
-          {t.education.subtitle}
-        </p>
+      <div className="flex items-end justify-between gap-4">
+        <div>
+          <p className="section-number mb-2 flex items-center gap-2">
+            <GraduationCap className="h-3 w-3 text-cyber-blue/60" />
+            03 · EDUCATION
+          </p>
+          <h2 className="font-display text-2xl font-black tracking-tight text-white sm:text-3xl">
+            {t.education.title}
+          </h2>
+          <p className="mt-1 text-[11px] font-medium text-slate-500">
+            {t.education.subtitle}
+          </p>
+        </div>
+        <div className="hidden h-px flex-1 bg-linear-to-r from-white/10 to-transparent sm:block" />
       </div>
 
       <div className="relative border-l border-white/10 pl-6 sm:pl-8">
-        <div className="absolute bottom-0 left-[-1px] top-0 w-px bg-gradient-to-b from-cyber-blue to-transparent" />
+        <div className="absolute bottom-0 -left-px top-0 w-px bg-linear-to-b from-cyber-blue to-transparent" />
 
         {education.map((item, index) => (
           <motion.article
